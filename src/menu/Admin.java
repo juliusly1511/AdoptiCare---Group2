@@ -155,7 +155,21 @@ public class Admin {
         }
     }
 
+    // =============== SEARCH PET ===============
     public static void searchPet() {
+        try {
+            
+            System.out.println("Enter Pet ID: ");
+            int id = input.nextInt();
+            input.nextLine();
+            
+            Connection con = DBConnect.getConnection();
+            
+            String sql = "SELECT * FROM pets WHERE pet_id = ?";
+            
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public static void updatePet() {
