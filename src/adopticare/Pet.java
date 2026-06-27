@@ -2,7 +2,7 @@ package adopticare;
 
 public class Pet {
 
-    // ===== Private Fields/Attributes of Pet Class
+    // ===== Private Fields/Attributes of Pet Class =====
     private int petId;
     private String petName;
     private String species;
@@ -15,7 +15,7 @@ public class Pet {
     private String adoptionStatus;
     private boolean archived;
     
-    //Pet Constructor parameterized/non-parameterized
+    // ===== Pet Constructor parameterized/non-parameterized =====
     public Pet() {
     }
 
@@ -40,7 +40,7 @@ public class Pet {
         
     }
     
-    //Getter and Setter Method of Private Fields
+    // ===== Getter and Setter Method of Private Fields =====
     public int getPetId() {
         return petId;
     }
