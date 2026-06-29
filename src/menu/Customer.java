@@ -1,7 +1,10 @@
 package menu;
 
+import customerchoices.ViewAvailablePets;
+import customerchoices.ViewPetDetails;
+import customerchoices.SubmitAdoptionRequest;
+import customerchoices.SearchPet;
 import java.util.Scanner;
-import customermenu.*;
 
 public class Customer {
 

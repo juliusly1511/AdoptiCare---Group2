@@ -2,6 +2,7 @@
 package menu;
 
 import java.util.Scanner;
+import vetchoices.*;
 
 
 public class Veterinarian {
@@ -19,10 +20,11 @@ public class Veterinarian {
             
             System.out.println("1. View Pets");
             System.out.println("2. Search Pet");
-            System.out.println("3. Update Vaccination");
-            System.out.println("4. View Vaccinated Pets");
-            System.out.println("5. View Vaccination Schedule");
-            System.out.println("6. Logout");
+            System.out.println("3. Add Vaccination");
+            System.out.println("4. Update Vaccination");
+            System.out.println("5. View Vaccinated Pets");
+            System.out.println("6. View Vaccination Schedule");
+            System.out.println("7. Logout");
             
             System.out.print("Choose: ");
             choice = input.nextInt();
@@ -32,26 +34,30 @@ public class Veterinarian {
             switch (choice) {
                 
                 case 1:
-                    viewPets();
+                    ViewPets.viewPets();
                     break;
                     
                 case 2:
-                    searchPet();
+                    SearchPet.searchPet();
                     break;
                     
                 case 3:
-                    updateVaccination();
+                    AddPet.addPet();
                     break;
                     
                 case 4:
-                    viewVaccinatedPets();
+                    UpdateVaccination.updateVaccination();
                     break;
                     
                 case 5:
-                    viewVaccinationSchedule();
+                    ViewVaccinatedPets.viewVaccinatedPets();
                     break;
                     
                 case 6:
+                    ViewVaccinationSchedule.viewVaccinationSchedule();
+                    break;
+                    
+                case 7:
                     System.out.println("Logging out...");
                     break;
                     
@@ -59,26 +65,6 @@ public class Veterinarian {
                     System.out.println("Invalid choice.");
             }
             
-        } while (choice != 6);
-    }
-    
-    public static void viewPets() {
-        
-    }
-    
-    public static void searchPet() {
-        
-    }
-    
-    public static void updateVaccination() {
-        
-    }
-    
-    public static void viewVaccinatedPets() {
-        
-    }
-    
-    public static void viewVaccinationSchedule() {
-        
+        } while (choice != 7);
     }
 }

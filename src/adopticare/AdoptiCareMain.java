@@ -49,7 +49,7 @@ public class AdoptiCareMain {
         String role = Login.login();
 
         if (role == null) {
-            System.out.println("Invalid Login.");
+            System.out.println("Invalid username or password.");
 
         } else if (role.equals("Administrator")) {
             Admin.adminMenu();

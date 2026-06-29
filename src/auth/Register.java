@@ -37,6 +37,8 @@ public class Register {
                 System.out.println("Registration Successfully!");
             }
             
+            con.close();
+            
         } catch (Exception e) {
             System.out.println(e);
         }

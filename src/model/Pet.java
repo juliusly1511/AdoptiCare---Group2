@@ -10,8 +10,6 @@ public class Pet {
     private int age;
     private String healthCondition;
     private String vaccinationStatus;
-    private String lastVaccinationDate;
-    private String nextVaccinationSchedule;
     private String adoptionStatus;
     private boolean archived;
     
@@ -22,8 +20,7 @@ public class Pet {
     public Pet(int petId, String petName,
                String species, String breed,
                int age, String healthCondition,
-               String vaccinationStatus, String lastVaccinationDate,
-               String nextVaccinationSchedule, String adoptionStatus,
+               String vaccinationStatus, String adoptionStatus,
                boolean archived) {
         
         this.petId = petId;
@@ -33,8 +30,6 @@ public class Pet {
         this.age = age;
         this.healthCondition = healthCondition;
         this.vaccinationStatus = vaccinationStatus;
-        this.lastVaccinationDate = lastVaccinationDate;
-        this.nextVaccinationSchedule = nextVaccinationSchedule;
         this.adoptionStatus = adoptionStatus;
         this.archived = archived;
         
@@ -95,22 +90,6 @@ public class Pet {
 
     public void setVaccinationStatus(String vaccinationStatus) {
         this.vaccinationStatus = vaccinationStatus;
-    }
-
-    public String getLastVaccinationDate() {
-        return lastVaccinationDate;
-    }
-
-    public void setLastVaccinationDate(String lastVaccinationDate) {
-        this.lastVaccinationDate = lastVaccinationDate;
-    }
-
-    public String getNextVaccinationSchedule() {
-        return nextVaccinationSchedule;
-    }
-
-    public void setNextVaccinationSchedule(String nextVaccinationSchedule) {
-        this.nextVaccinationSchedule = nextVaccinationSchedule;
     }
 
     public String getAdoptionStatus() {

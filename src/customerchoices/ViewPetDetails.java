@@ -1,4 +1,4 @@
-package customermenu;
+package customerchoices;
 
 public class ViewPetDetails {
 
