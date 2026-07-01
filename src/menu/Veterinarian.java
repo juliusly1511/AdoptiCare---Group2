@@ -1,12 +1,13 @@
 
 package menu;
 
-import vetchoices.read.SearchPet;
-import vetchoices.read.ViewVaccinationSchedule;
-import vetchoices.read.ViewVaccinatedPets;
-import vetchoices.read.ViewPets;
-import vetchoices.create.AddVaccination;
 import java.util.Scanner;
+import vetchoices.create.AddVaccination;
+import vetchoices.read.SearchPet;
+import vetchoices.read.ViewPets;
+import vetchoices.read.ViewVaccinatedPets;
+import vetchoices.read.ViewVaccinationSchedule;
+import vetchoices.update.UpdateVaccinationStatus;
 
 
 public class Veterinarian {
@@ -38,39 +39,37 @@ public class Veterinarian {
             input.nextLine();
             
             switch (choice) {
-                
                 case 1:
-                    AddVaccination.addPet();
+                    AddVaccination.addVaccination();
                     break;
-                    
                 case 2:
                     SearchPet.searchPet();
                     break;
-                    
                 case 3:
-                    AddVaccination.addPet();
+                    ViewPets.viewPets();
                     break;
-                    
                 case 4:
-                    UpdateVaccination.updateVaccination();
-                    break;
-                    
-                case 5:
                     ViewVaccinatedPets.viewVaccinatedPets();
                     break;
-                    
-                case 6:
+                case 5:
                     ViewVaccinationSchedule.viewVaccinationSchedule();
                     break;
-                    
+                case 6:
+                    UpdateVaccinationStatus.updateVaccination();
+                    break;
                 case 7:
                     System.out.println("Logging out...");
                     break;
-                    
+                case 8:
+                    System.out.println("Vaccination schedule update feature is not available yet.");
+                    break;
+                case 9:
+                    System.out.println("Logging out...");
+                    break;
                 default:
                     System.out.println("Invalid choice.");
             }
-            
-        } while (choice != 7);
+
+        } while (choice != 9);
     }
 }

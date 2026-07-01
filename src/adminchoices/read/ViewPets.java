@@ -12,8 +12,6 @@ public class ViewPets {
         String sql = "SELECT * FROM pets WHERE archived = FALSE";
 
         try (Connection con = DBConnect.getConnection(); PreparedStatement pst = con.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
-
-        try (Connection con = DBConnect.getConnection(); PreparedStatement pst = con.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
             System.out.println("\n===== PET LIST =====");
             boolean found = false;
 

@@ -1,6 +1,6 @@
 package vetchoices.create;
 
-import database.DBConnection;
+import database.DBConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
@@ -29,7 +29,7 @@ public class AddVaccination {
             Timestamp lastVaccinationDate = Timestamp.valueOf(last_vaccination);
             Timestamp nextVaccinationSchedule = Timestamp.valueOf(next_vaccination);
             
-            Connection con = DBConnection.getConnection();
+            Connection con = DBConnect.getConnection();
             
             String sql = "INSERT INTO vaccinations "
                     + "(pet_id, vaccine_name, last_vaccination_date, next_vaccination_schedule) "

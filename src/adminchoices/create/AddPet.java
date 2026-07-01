@@ -1,60 +1,54 @@
 package adminchoices.create;
 
-import database.DBConnection;
-import java.sql.*;
+import database.DBConnect;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class AddPet {
 
-    static Scanner input = new Scanner(System.in);
-
-    public static void addPet() {
-
+    public static void addPet(Scanner input) {
         try {
             System.out.print("Pet Name: ");
-            String name = input.nextLine();
-
-            System.out.print("Gender: ");
-            String gender = input.nextLine();
-            
-            System.out.print("Age: ");
-            int age = input.nextInt();
-            input.nextLine();
+            String name = input.nextLine().trim();
 
             System.out.print("Species: ");
-            String species = input.nextLine();
+            String species = input.nextLine().trim();
 
             System.out.print("Breed: ");
-            String breed = input.nextLine();
+            String breed = input.nextLine().trim();
 
-            System.out.print("Description: ");
-            String description = input.nextLine();
-            
-            Connection con = DBConnection.getConnection();
+            System.out.print("Age: ");
+            int age = Integer.parseInt(input.nextLine().trim());
 
-            String sql
-                    = "INSERT INTO pets "
-                    + "(pet_name, gender, age, species, breed, health_condition, description) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?);";
+            System.out.print("Health Condition: ");
+            String healthCondition = input.nextLine().trim();
 
-            PreparedStatement pst = con.prepareStatement(sql);
+            String sql = "INSERT INTO pets (pet_name, species, breed, age, health_condition, vaccination_status, adoption_status, archived) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
-            pst.setString(1, name);
-            pst.setString(2, gender);
-            pst.setInt(3, age);
-            pst.setString(4, species);
-            pst.setString(5, breed);
-            pst.setString(6, healthCondition);
-            pst.setString(7, description);
-            
-            int rows = pst.executeUpdate();
+            try (Connection con = DBConnect.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
+                pst.setString(1, name);
+                pst.setString(2, species);
+                pst.setString(3, breed);
+                pst.setInt(4, age);
+                pst.setString(5, healthCondition);
+                pst.setString(6, "Pending");
+                pst.setString(7, "Available");
+                pst.setBoolean(8, false);
 
-            if (rows > 0) {
-                System.out.println("\nPet Added Successfully!");
+                int rows = pst.executeUpdate();
+                if (rows > 0) {
+                    System.out.println("Pet added successfully!");
+                } else {
+                    System.out.println("The pet could not be added.");
+                }
             }
 
-        } catch (SQLException e) {
-            System.out.println(e);
+        } catch (NumberFormatException ex) {
+            System.out.println("Please enter a valid age.");
+        } catch (SQLException ex) {
+            System.out.println("Unable to add pet: " + ex.getMessage());
         }
     }
 }

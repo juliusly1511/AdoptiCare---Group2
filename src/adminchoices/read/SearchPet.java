@@ -19,9 +19,6 @@ public class SearchPet {
             try (Connection con = DBConnect.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
                 pst.setInt(1, id);
 
-            try (Connection con = DBConnect.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
-                pst.setInt(1, id);
-
                 try (ResultSet rs = pst.executeQuery()) {
                     if (rs.next()) {
                         System.out.println("Name: " + rs.getString("pet_name"));

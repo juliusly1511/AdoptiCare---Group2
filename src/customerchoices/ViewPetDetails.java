@@ -1,6 +1,6 @@
 package customerchoices;
 
-import database.DBConnection;
+import database.DBConnect;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ public class ViewPetDetails {
         
         try{
             
-            Connection con = DBConnection.getConnection();
+            Connection con = DBConnect.getConnection();
             
             String sql = "SELECT * FROM pets WHERE archived = 0";
             

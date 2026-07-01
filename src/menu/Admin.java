@@ -1,6 +1,14 @@
 package menu;
 
-import adminchoices.*;
+import adminchoices.create.AddPet;
+import adminchoices.delete.DeletePet;
+import adminchoices.read.SearchPet;
+import adminchoices.read.ViewArchivedPets;
+import adminchoices.read.ViewPets;
+import adminchoices.read.ViewRequests;
+import adminchoices.update.ApproveRequest;
+import adminchoices.update.ArchivePet;
+import adminchoices.update.UpdatePet;
 import java.util.Scanner;
 
 public class Admin {

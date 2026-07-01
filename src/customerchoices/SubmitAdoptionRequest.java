@@ -1,6 +1,6 @@
 package customerchoices;
 
-import database.DBConnection;
+import database.DBConnect;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class SubmitAdoptionRequest {
 
             input.nextLine();
             
-            Connection con = DBConnection.getConnection();
+            Connection con = DBConnect.getConnection();
             
             String sql = 
                     "INSERT INTO adoption_requests " 
