@@ -25,7 +25,7 @@ public class Customer {
             System.out.println("4. Submit Adoption Request");
             System.out.println("5. Logout");
             
-            System.out.print("Choose: ");
+            System.out.print("\nChoose: ");
             choice = input.nextInt();
             
             input.nextLine();

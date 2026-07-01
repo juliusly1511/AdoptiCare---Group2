@@ -14,9 +14,6 @@ public class Pet {
     private boolean archived;
     
     // ===== Pet Constructor parameterized/non-parameterized =====
-    public Pet() {
-    }
-
     public Pet(int petId, String petName,
                String species, String breed,
                int age, String healthCondition,

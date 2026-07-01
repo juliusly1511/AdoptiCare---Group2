@@ -8,8 +8,6 @@ public class Vaccination {
     private String lastVaccinationDate;
     private String nextVaccinationSchedule;
     
-    public Vaccination() {
-    }
 
     public int getVaccinationId() {
         return vaccinationId;

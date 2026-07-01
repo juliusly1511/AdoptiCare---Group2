@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DBConnect {
+public abstract class DBConnection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/adopticaredb";
     private static final String USER = "root";

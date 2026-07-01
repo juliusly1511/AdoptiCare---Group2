@@ -1,8 +1,12 @@
 
 package menu;
 
+import vetchoices.read.SearchPet;
+import vetchoices.read.ViewVaccinationSchedule;
+import vetchoices.read.ViewVaccinatedPets;
+import vetchoices.read.ViewPets;
+import vetchoices.create.AddVaccination;
 import java.util.Scanner;
-import vetchoices.*;
 
 
 public class Veterinarian {
@@ -18,13 +22,15 @@ public class Veterinarian {
         do {
             System.out.println("\n===== VETERINARIAN MENU =====");
             
-            System.out.println("1. View Pets");
+            System.out.println("1. Add Vaccination");
             System.out.println("2. Search Pet");
-            System.out.println("3. Add Vaccination");
-            System.out.println("4. Update Vaccination");
-            System.out.println("5. View Vaccinated Pets");
-            System.out.println("6. View Vaccination Schedule");
-            System.out.println("7. Logout");
+            System.out.println("3. View Pets");
+            System.out.println("4. View Vaccinated Pets");
+            System.out.println("5. View Vaccination Schedule");
+            System.out.println("6. Update Health Condition");
+            System.out.println("7. Update Vaccination Status");
+            System.out.println("8. Update Vaccination Schedule");
+            System.out.println("9. Logout");
             
             System.out.print("Choose: ");
             choice = input.nextInt();
@@ -34,7 +40,7 @@ public class Veterinarian {
             switch (choice) {
                 
                 case 1:
-                    ViewPets.viewPets();
+                    AddVaccination.addPet();
                     break;
                     
                 case 2:
@@ -42,7 +48,7 @@ public class Veterinarian {
                     break;
                     
                 case 3:
-                    AddPet.addPet();
+                    AddVaccination.addPet();
                     break;
                     
                 case 4:

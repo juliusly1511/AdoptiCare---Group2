@@ -1,4 +1,4 @@
-package adminchoices;
+package adminchoices.delete;
 
 import database.DBConnect;
 import java.sql.Connection;

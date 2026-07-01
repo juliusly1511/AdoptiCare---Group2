@@ -1,4 +1,4 @@
-package vetchoices;
+package vetchoices.read;
 
 public class ViewPets {
 
