@@ -1,8 +1,8 @@
 package adopticare;
 
 import auth.*;
-import menu.*;
 import java.util.Scanner;
+import menu.*;
 
 public class AdoptiCareMain {
 
@@ -19,44 +19,45 @@ public class AdoptiCareMain {
             System.out.println("2. Register");
             System.out.println("3. Exit");
 
-            System.out.print("Choose: ");
-            choice = input.nextInt();
-            input.nextLine();
+            choice = readChoice();
 
             switch (choice) {
 
-                case 1:
-                    handleLogin();
-                    break;
-
-                case 2:
-                    Register.registerCustomer();
-                    break;
-
-                case 3:
-                    System.out.println("Thank you for using AdoptiCare!");
-                    break;
-
-                default:
-                    System.out.println("Invalid choice.");
+                case 1 -> handleLogin();
+                case 2 -> Register.registerCustomer();
+                case 3 -> System.out.println("Thank you for using AdoptiCare!");
+                default -> System.out.println("Invalid choice.");
             }
         } while (choice != 3);
     }
 
+    private static int readChoice() {
+        while (true) {
+            try {
+                System.out.print("Choose: ");
+                String line = input.nextLine().trim();
+                return Integer.parseInt(line);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please enter a valid number.");
+            } catch (java.util.NoSuchElementException ex) {
+                System.out.println("Input stream closed. Exiting.");
+                return 3;
+            }
+        }
+    }
+
     public static void handleLogin() {
 
-        //Data Validation in where the user will proceed
         String role = Login.login();
-
         if (role == null) {
             System.out.println("Invalid username or password.");
-
-        } else if (role.equals("Administrator")) {
-            Admin.adminMenu();
-        } else if (role.equals("Veterinarian")) {
-            Veterinarian.veterinarianMenu();
-        } else if (role.equals("Customer")) {
-            Customer.customerMenu();
+        } else {
+            switch (role) {
+                case "Administrator" -> Admin.adminMenu();
+                case "Veterinarian" -> Veterinarian.veterinarianMenu();
+                case "Customer" -> Customer.customerMenu();
+                default -> System.out.println("Unknown role: " + role);
+            }
         }
     }
 }

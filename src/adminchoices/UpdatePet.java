@@ -1,61 +1,48 @@
 package adminchoices;
 
 import database.DBConnect;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class UpdatePet {
 
-    public static void updatePet() {
-        
-        Scanner input = new Scanner(System.in);
-        
+    public static void updatePet(Scanner input) {
         try {
-            
-            System.out.println("Enter Pet ID: ");
-            int petId = input.nextInt();
-            
-            input.nextLine();
-            
-            System.out.println("New Name: ");
-            String name = input.nextLine();
-            
-            System.out.println("New Breed: ");
-            String breed = input.nextLine();
-            
-            System.out.println("New Age: ");
-            int age = input.nextInt();
-            
-            input.nextLine();
-            
-            Connection con = DBConnect.getConnection();
-            
-            String sql = 
-                    "UPDATE pets"
-                    + "SET pet_name = ?,"
-                    + "breed = ?"
-                    + "age = ?"
-                    + "WHERE pet_id = ?";
-            
-            PreparedStatement pst = con.prepareStatement(sql);
-            
-            pst.setString(1, name);
-            pst.setString(2, breed);
-            pst.setInt(3, age);
-            pst.setInt(4, petId);
-            
-            int rows = pst.executeUpdate();
-            
-            if (rows > 0) {
-                System.out.println("Pet updated.");
-            } else {
-                System.out.println("Pet not found.");
+            System.out.print("Enter Pet ID: ");
+            int petId = Integer.parseInt(input.nextLine().trim());
+
+            System.out.print("New Name: ");
+            String name = input.nextLine().trim();
+
+            System.out.print("New Breed: ");
+            String breed = input.nextLine().trim();
+
+            System.out.print("New Age: ");
+            int age = Integer.parseInt(input.nextLine().trim());
+
+            String sql = "UPDATE pets SET pet_name = ?, breed = ?, age = ? WHERE pet_id = ?";
+
+            try (Connection con = DBConnect.getConnection(); PreparedStatement pst = con.prepareStatement(sql)) {
+                pst.setString(1, name);
+                pst.setString(2, breed);
+                pst.setInt(3, age);
+                pst.setInt(4, petId);
+
+                int rows = pst.executeUpdate();
+
+                if (rows > 0) {
+                    System.out.println("Pet updated successfully.");
+                } else {
+                    System.out.println("Pet not found.");
+                }
             }
-            
-            con.close();
-            
-        } catch (Exception e) {
-            System.out.println(e);
+
+        } catch (NumberFormatException ex) {
+            System.out.println("Please enter valid numeric values.");
+        } catch (SQLException ex) {
+            System.out.println("Unable to update pet: " + ex.getMessage());
         }
     }
 }

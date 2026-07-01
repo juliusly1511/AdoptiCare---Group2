@@ -1,13 +1,11 @@
 package menu;
 
-import database.DBConnect;
-import java.sql.*;
-import java.util.Scanner;
 import adminchoices.*;
+import java.util.Scanner;
 
 public class Admin {
 
-    static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     public static void adminMenu() {
 
@@ -23,71 +21,43 @@ public class Admin {
             System.out.println("3. Update Pet");
             System.out.println("4. Delete Pet");
             System.out.println("5. Search Pet");
-            System.out.println("6. Archived Adopted Pet");
+            System.out.println("6. Archive Pet");
             System.out.println("7. View Archived Pets");
             System.out.println("8. View Adoption Requests");
             System.out.println("9. Approve Adoption Request");
             System.out.println("10. Logout");
 
-            System.out.print("Choose: ");
-            choice = input.nextInt();
-            input.nextLine();
+            choice = readChoice();
 
             switch (choice) {
-                case 1:
-                    AddPet.addPet();
-                    break;
-
-                case 2:
-                    ViewPets.viewPets();
-                    break;
-
-                case 3:
-                    UpdatePet.updatePet();
-                    break;
-
-                case 4:
-                    DeletePet.deletePet();
-                    break;
-
-                case 5:
-                    SearchPet.searchPet();
-                    break;
-
-                case 6:
-                    ArchivePet.archivePet();
-                    break;
-
-                case 7:
-                    ViewArchivedPets.viewArchivedPets();
-                    break;
-
-                case 8:
-                    ViewRequests.viewRequests();
-                    break;
-                    
-                case 9:
-                    ApproveRequest.approveRequest();
-                    
-                case 10:
-                    System.out.println("Logging out...");
-                    break;
-
-                default:
-                    System.out.println("Invalid choice.");
+                case 1 -> AddPet.addPet(input);
+                case 2 -> ViewPets.viewPets();
+                case 3 -> UpdatePet.updatePet(input);
+                case 4 -> DeletePet.deletePet(input);
+                case 5 -> SearchPet.searchPet(input);
+                case 6 -> ArchivePet.archivePet(input);
+                case 7 -> ViewArchivedPets.viewArchivedPets();
+                case 8 -> ViewRequests.viewRequests();
+                case 9 -> ApproveRequest.approveRequest(input);
+                case 10 -> System.out.println("Logging out...");
+                default -> System.out.println("Invalid choice.");
             }
 
         } while (choice != 10);
     }
-    public static void updatePet() {
-    }
 
-    public static void deletePet() {
-    }
-
-    public static void archivePet() {
-    }
-
-    public static void viewArchivedPets() {
+    private static int readChoice() {
+        while (true) {
+            try {
+                System.out.print("Choose: ");
+                String line = input.nextLine().trim();
+                return Integer.parseInt(line);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please enter a valid number.");
+            } catch (java.util.NoSuchElementException ex) {
+                System.out.println("Input stream closed. Exiting.");
+                return 10;
+            }
+        }
     }
 }
