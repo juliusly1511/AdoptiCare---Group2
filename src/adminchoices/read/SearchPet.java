@@ -1,7 +1,9 @@
-package adminchoices;
+package adminchoices.read;
 
-import database.DBConnect;
-import java.sql.*;
+import database.DBConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class SearchPet {
@@ -16,7 +18,7 @@ public class SearchPet {
             int id = input.nextInt();
             input.nextLine();
 
-            Connection con = DBConnect.getConnection();
+            Connection con = DBConnection.getConnection();
 
             String sql = "SELECT * FROM pets WHERE pet_id = ?";
 
@@ -27,7 +29,9 @@ public class SearchPet {
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                System.out.println("Name: " + rs.getString("pet_name"));
+                System.out.println("Pet ID: " + rs.getInt("pet_id"));
+                
+                System.out.println("Pet Name: " + rs.getString("pet_name"));
 
                 System.out.println("Species: " + rs.getString("species"));
 

@@ -1,6 +1,6 @@
-package adminchoices;
+package adminchoices.read;
 
-import database.DBConnect;
+import database.DBConnection;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -12,11 +12,11 @@ public class ViewArchivedPets {
         
         try {
             
-            Connection con = DBConnect.getConnection();
+            Connection con = DBConnection.getConnection();
             
             String sql = 
                     "SELECT * FROM pets " 
-                    + "WHERE archived = TRUE";
+                    + "WHERE archived = 1";
             
             Statement st = con.createStatement();
             

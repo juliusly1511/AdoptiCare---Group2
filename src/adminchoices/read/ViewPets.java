@@ -1,13 +1,13 @@
-package adminchoices;
+package adminchoices.read;
 
-import database.DBConnect;
+import database.DBConnection;
 import java.sql.*;
 
 public class ViewPets {
 
         public static void viewPets() {
         try {
-            Connection con = DBConnect.getConnection();
+            Connection con = DBConnection.getConnection();
 
             Statement st = con.createStatement();
 

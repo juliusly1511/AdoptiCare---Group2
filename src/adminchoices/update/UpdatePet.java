@@ -1,6 +1,6 @@
-package adminchoices;
+package adminchoices.update;
 
-import database.DBConnect;
+import database.DBConnection;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -10,6 +10,8 @@ public class UpdatePet {
         
         Scanner input = new Scanner(System.in);
         
+        System.out.println("===== UPDATE PET DETAILS =====");
+        
         try {
             
             System.out.println("Enter Pet ID: ");
@@ -17,18 +19,32 @@ public class UpdatePet {
             
             input.nextLine();
             
-            System.out.println("New Name: ");
+            System.out.print("Pet Name: ");
             String name = input.nextLine();
             
-            System.out.println("New Breed: ");
+            System.out.print("Species: ");
+            String species = input.nextLine();
+            
+            System.out.print("Age: ");
+            int age = input.nextInt();
+            
+            System.out.print("Gender: ");
+            String gender = input.nextLine();
+            
+            System.out.print("Breed: ");
             String breed = input.nextLine();
             
-            System.out.println("New Age: ");
-            int age = input.nextInt();
+            System.out.print("Health Condition: ");
+            String healthCondition = input.nextLine();
+            
+            System.out.print("Vaccination Status: ");
+            String vaccinationStatus = input.nextLine();
+            
+            System.out.println("");
             
             input.nextLine();
             
-            Connection con = DBConnect.getConnection();
+            Connection con = DBConnection.getConnection();
             
             String sql = 
                     "UPDATE pets"

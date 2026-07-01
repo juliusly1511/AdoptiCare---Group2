@@ -1,6 +1,6 @@
 package auth;
 
-import database.DBConnect;
+import database.DBConnection;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -20,7 +20,7 @@ public class Register {
             System.out.print("Password: ");
             String password = input.nextLine();
             
-            Connection con = DBConnect.getConnection();
+            Connection con = DBConnection.getConnection();
             
             String sql = 
                     "INSERT INTO users(username, password, role) VALUES (?, ?, ?)"; 
@@ -29,7 +29,7 @@ public class Register {
             
             pst.setString(1, username);
             pst.setString(2, password);
-            pst.setString(3, "Customers");
+            pst.setString(3, "Customer");
             
             int rows = pst.executeUpdate();
             

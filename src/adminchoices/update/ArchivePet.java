@@ -1,12 +1,12 @@
-package adminchoices;
+package adminchoices.update;
 
-import database.DBConnect;
-import java.sql.*;
 import java.util.Scanner;
+import java.sql.*;
+import database.DBConnection;
 
-public class DeletePet {
+public class ArchivePet {
 
-    public static void deletePet() {
+    public static void archivePet() {
         
         Scanner input = new Scanner(System.in);
         
@@ -17,11 +17,11 @@ public class DeletePet {
             
             input.nextLine();
             
-            Connection con = DBConnect.getConnection();
+            Connection con = DBConnection.getConnection();
             
-            String sql =
-                    "DELETE " 
-                    + "FROM pets " 
+            String sql = 
+                    "UPDATE pets" 
+                    + "SET archived = TRUE " 
                     + "WHERE pet_id = ?";
             
             PreparedStatement pst = con.prepareStatement(sql);
@@ -31,9 +31,7 @@ public class DeletePet {
             int rows = pst.executeUpdate();
             
             if (rows > 0) {
-                System.out.println("Pet deleted.");
-            } else {
-                System.out.println("Pet not found.");
+                System.out.println("Pet archived.");
             }
             
             con.close();

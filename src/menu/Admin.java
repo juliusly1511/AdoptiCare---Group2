@@ -1,9 +1,15 @@
 package menu;
 
-import database.DBConnect;
-import java.sql.*;
+import adminchoices.delete.DeletePet;
+import adminchoices.update.ApproveRequest;
+import adminchoices.update.ArchivePet;
+import adminchoices.update.UpdatePet;
+import adminchoices.read.ViewRequests;
+import adminchoices.read.SearchPet;
+import adminchoices.read.ViewPets;
+import adminchoices.read.ViewArchivedPets;
+import adminchoices.create.AddPet;
 import java.util.Scanner;
-import adminchoices.*;
 
 public class Admin {
 
@@ -29,7 +35,7 @@ public class Admin {
             System.out.println("9. Approve Adoption Request");
             System.out.println("10. Logout");
 
-            System.out.print("Choose: ");
+            System.out.print("\nChoose: ");
             choice = input.nextInt();
             input.nextLine();
 
