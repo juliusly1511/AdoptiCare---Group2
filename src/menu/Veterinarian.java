@@ -12,7 +12,7 @@ import vetchoices.update.UpdateVaccinationStatus;
 
 public class Veterinarian {
     
-    static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
     
     public static void veterinarianMenu() {
         
@@ -33,10 +33,7 @@ public class Veterinarian {
             System.out.println("8. Update Vaccination Schedule");
             System.out.println("9. Logout");
             
-            System.out.print("Choose: ");
-            choice = input.nextInt();
-            
-            input.nextLine();
+            choice = readChoice();
             
             switch (choice) {
                 case 1:
@@ -72,4 +69,21 @@ public class Veterinarian {
 
         } while (choice != 9);
     }
+
+    private static int readChoice() {
+        while (true) {
+            try {
+                System.out.print("Choose: ");
+                String line = input.nextLine().trim();
+                return Integer.parseInt(line);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please enter a valid number.");
+            } catch (java.util.NoSuchElementException ex) {
+                System.out.println("Input stream closed. Exiting.");
+                return 9;
+            }
+        }
+    }
 }
+
+

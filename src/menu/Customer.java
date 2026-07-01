@@ -1,14 +1,14 @@
 package menu;
 
+import customerchoices.SearchPet;
+import customerchoices.SubmitAdoptionRequest;
 import customerchoices.ViewAvailablePets;
 import customerchoices.ViewPetDetails;
-import customerchoices.SubmitAdoptionRequest;
-import customerchoices.SearchPet;
 import java.util.Scanner;
 
 public class Customer {
 
-    static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
 
     public static void customerMenu() {
         
@@ -25,10 +25,7 @@ public class Customer {
             System.out.println("4. Submit Adoption Request");
             System.out.println("5. Logout");
             
-            System.out.print("\nChoose: ");
-            choice = input.nextInt();
-            
-            input.nextLine();
+            choice = readChoice();
             
             switch (choice) {
                 
@@ -57,4 +54,21 @@ public class Customer {
             }
         } while (choice != 5);
     }
+
+    private static int readChoice() {
+        while (true) {
+            try {
+                System.out.print("\nChoose: ");
+                String line = input.nextLine().trim();
+                return Integer.parseInt(line);
+            } catch (NumberFormatException ex) {
+                System.out.println("Please enter a valid number.");
+            } catch (java.util.NoSuchElementException ex) {
+                System.out.println("Input stream closed. Exiting.");
+                return 5;
+            }
+        }
+    }
 }
+
+
