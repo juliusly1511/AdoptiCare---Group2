@@ -1,4 +1,4 @@
-package adminchoices;
+package adminchoices.update;
 
 import database.DBConnect;
 import java.sql.Connection;
